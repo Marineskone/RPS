@@ -1,10 +1,19 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { Component, useState } from "react";
+import { useState } from "react";
 import Hand from "./components/Hand";
-import { GiPaper } from "react-icons/gi";
+import { FaHandPaper, FaHandRock, FaHandScissors } from "react-icons/fa";
+
+import Card from "./components/Card";
+export const hand = {
+  paper: "paper",
+  rock: "rock",
+  scissors: "scissors",
+  empty: "empty",
+};
 
 const App = () => {
+  const [playerHand, setPlayerHand] = useState(hand.empty);
   return (
     <div
       style={{
@@ -23,12 +32,35 @@ const App = () => {
           backgroundColor: "#2d3748",
           borderRadius: "20px",
           border: "5px solid #3b60d1",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
         }}
       >
-        <Hand icon={<GiPaper size="50px" />}></Hand>
+        <div
+          style={{
+            width: "100%",
+            height: "80%",
+            borderBottom: "5px solid #3b60d1",
+            display: "flex",
+            justifyContent: "space-evenly",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <Hand></Hand>
+          <Hand selectedHand={playerHand}></Hand>
+        </div>
+        <div
+          style={{
+            height: "20%",
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-evenly",
+          }}
+        >
+          <Card icon={<FaHandRock size="80px" />}></Card>
+          <Card icon={<FaHandPaper size="80px" />}></Card>
+          <Card icon={<FaHandScissors size="80px" />}></Card>
+        </div>
       </div>
     </div>
   );

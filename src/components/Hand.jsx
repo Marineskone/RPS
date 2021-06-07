@@ -1,4 +1,5 @@
-const Hand = (props) => {
+import {hand} from "../App"
+const Hand = ({selectedHand}) => {
     return (
     <div
     style={{
@@ -9,6 +10,6 @@ const Hand = (props) => {
       justifyContent: "center",
       alignItems: "center",
     }}
-  >{props.icon}</div>)
+  >{selectedHand}</div>)
 }
 export default Hand
